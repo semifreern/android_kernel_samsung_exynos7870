@@ -69,6 +69,7 @@ extern int set_current_groups(struct group_info *);
 extern void set_groups(struct cred *, struct group_info *);
 extern int groups_search(const struct group_info *, kgid_t);
 extern bool may_setgroups(void);
+extern void groups_sort(struct group_info *);
 
 /* access the groups "array" with this macro */
 #define GROUP_AT(gi, i) \
@@ -237,6 +238,7 @@ static inline const struct cred *get_cred(const struct cred *cred)
 	validate_creds(cred);
 	return get_new_cred(nonconst_cred);
 }
+
 
 /**
  * put_cred - Release a reference to a set of credentials
